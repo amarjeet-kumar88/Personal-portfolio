@@ -65,7 +65,7 @@ export default function Hero() {
                   bg-primary hover:bg-primary/90
                   hover:scale-105 transition-all hover:text-amber-600"
                 >
-                  View Projects
+                  Projects
                 </a>
               </Magnetic>
               <Magnetic>
@@ -77,7 +77,7 @@ export default function Hero() {
                   hover:scale-105 transition-all hover:text-amber-600
                 "
                 >
-                  Download Resume
+                  Resume
                 </a>
               </Magnetic>
             </div>
