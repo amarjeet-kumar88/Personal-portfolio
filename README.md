@@ -6,7 +6,7 @@ Designed to showcase skills, experience, projects, and achievements in a recruit
 ---
 
 ## 🌐 Live Demo
-🔗 https://amarjeet-portfolio.vercel.app
+🔗 https://personal-portfolio-psi-one-64.vercel.app/
 
 ---
 
@@ -52,6 +52,4 @@ I focus on clean architecture, performance optimization, and modern DevOps pract
 - Deployed on Vercel
 
 ---
-
-## 📂 Project Structure
 
