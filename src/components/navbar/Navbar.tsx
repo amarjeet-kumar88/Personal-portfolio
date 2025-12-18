@@ -43,13 +43,22 @@ export default function Navbar() {
 
   if (!mounted) return null;
 
-  const handleScroll = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setOpen(false);
-    }
-  };
+const handleScroll = (href: string) => {
+  const el = document.querySelector(href);
+  if (!el) return;
+
+  // close mobile menu first
+  setOpen(false);
+
+  // wait for menu animation + DOM update
+  setTimeout(() => {
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 200);
+};
+
 
   return (
     <motion.nav
