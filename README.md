@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Amarjeet Kumar – Full Stack Developer Portfolio
 
-## Getting Started
+A modern, animated, fully responsive developer portfolio built with **Next.js**, **TypeScript**, and **Tailwind CSS**.  
+Designed to showcase skills, experience, projects, and achievements in a recruiter-friendly and performance-optimized way.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌐 Live Demo
+🔗 https://amarjeet-portfolio.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧠 About Me
+I am a **Full Stack Web Developer** with a strong interest in building scalable, high-performance web applications.  
+I focus on clean architecture, performance optimization, and modern DevOps practices.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend & DevOps
+- Node.js
+- REST APIs
+- Docker
+- CI/CD
+- AWS (Basics)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tools & Libraries
+- Lucide Icons
+- EmailJS (optional)
+- Next Themes
+- GitHub Actions
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Fully responsive design
+- Dark / Light mode
+- Animated UI & page transitions
+- SEO optimized (95+ Lighthouse)
+- ATS-friendly content
+- Resume download
+- Contact form
+- Deployed on Vercel
+
+---
+
+## 📂 Project Structure
+

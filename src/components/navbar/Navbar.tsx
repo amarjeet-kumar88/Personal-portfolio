@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import AnimatedBoy from "../hero/AnimatedBoy";
 
 const links = [
   { name: "Home", href: "#home" },
@@ -64,7 +63,6 @@ export default function Navbar() {
         border-b border-border
       "
     >
-      <AnimatedBoy />
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <span className="font-bold text-xl tracking-tight text-amber-700">

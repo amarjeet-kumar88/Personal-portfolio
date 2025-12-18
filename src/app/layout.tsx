@@ -1,11 +1,19 @@
 import "./globals.css";
+import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/ui/PageTransition";
 import type { Metadata } from "next";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+
 export const metadata: Metadata = {
   title: "Amarjeet Kumar | Full Stack Developer",
+  
   description:
     "Full Stack Developer skilled in Next.js, React, TypeScript, Node.js, DevOps & Cloud. Open to software engineering opportunities.",
   keywords: [
@@ -20,7 +28,7 @@ export const metadata: Metadata = {
     title: "Amarjeet Kumar | Full Stack Developer",
     description:
       "Building scalable, high-performance web applications with modern technologies.",
-    url: "https://your-domain.vercel.app",
+    url: "https://personal-portfolio-psi-one-64.vercel.app/",
     siteName: "Amarjeet Portfolio",
     images: [
       {
@@ -42,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Navbar />
           <PageTransition>{children}</PageTransition>
