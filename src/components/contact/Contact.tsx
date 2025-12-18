@@ -29,7 +29,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" data-bg="#0a0a0a" className="py-32 bg-surface scroll-mt-28">
+    <section id="contact" data-bg="#0a0a0a" className="py-14 bg-surface scroll-mt-28">
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
         <motion.h2

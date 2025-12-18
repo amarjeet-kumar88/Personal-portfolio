@@ -63,7 +63,7 @@ const certifications = [
 
 export default function About() {
   return (
-    <section id="about" data-bg="#0f172a" className="py-32 bg-surface overflow-hidden scroll-mt-28">
+    <section id="about" data-bg="#0f172a" className="py-14 bg-surface overflow-hidden scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
@@ -207,7 +207,7 @@ export default function About() {
             bg-background border border-border
             rounded-3xl p-8 mb-28
             hover:shadow-2xl transition
-            hover:bg-cyan-950
+            hover:scale-[1.02]
           "
         >
           <h3 className="text-2xl font-bold text-primary mb-2">
