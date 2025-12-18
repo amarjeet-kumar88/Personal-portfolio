@@ -17,69 +17,72 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [active, setActive] = useState<string>("home");
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
-  // 🔹 Active section on scroll
+  /* 🔹 Shrink navbar on scroll */
   useEffect(() => {
-    const handler = () => {
-      const sections = links.map((l) =>
-        document.querySelector(l.href)
-      );
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-      sections.forEach((section) => {
+  /* 🔹 Active section detection */
+  useEffect(() => {
+    const onScroll = () => {
+      links.forEach((link) => {
+        const section = document.querySelector(link.href);
         if (!section) return;
+
         const rect = section.getBoundingClientRect();
         if (rect.top <= 120 && rect.bottom >= 120) {
-          setActive(section.id);
+          setActive(link.href.replace("#", ""));
         }
       });
     };
 
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   if (!mounted) return null;
 
-const handleScroll = (href: string) => {
-  const el = document.querySelector(href);
-  if (!el) return;
+  const handleScroll = (href: string) => {
+    const el = document.querySelector(href);
+    if (!el) return;
 
-  // close mobile menu first
-  setOpen(false);
+    setOpen(false);
 
-  // wait for menu animation + DOM update
-  setTimeout(() => {
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 200);
-};
-
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 200);
+  };
 
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="
+      className={`
         fixed top-0 w-full z-50
         backdrop-blur
         bg-background/80
         border-b border-border
-      "
+        transition-all duration-300
+        ${scrolled ? "py-2 shadow-md" : "py-4"}
+      `}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <span className="font-bold text-xl tracking-tight text-amber-700">
           Amarjeet<span className="text-primary">.dev</span>
         </span>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-10 ">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((link) => {
             const id = link.href.replace("#", "");
             const isActive = active === id;
@@ -88,55 +91,47 @@ const handleScroll = (href: string) => {
               <button
                 key={link.name}
                 onClick={() => handleScroll(link.href)}
-                className="
-                  relative text-sm font-medium
-                  text-muted hover:text-foreground
-                  transition
-                  cursor-pointer
-                  hover:text-amber-600
-                "
+                className="relative text-sm font-medium transition"
               >
-                {link.name}
-                {/* underline */}
                 <span
                   className={`
-                    absolute -bottom-1 left-0 h-0.5 w-full
-                    bg-primary transition-transform duration-300
-                    ${isActive ? "scale-x-100" : "scale-x-0"}
-                    origin-left
+                    transition-colors
+                    ${isActive ? "text-primary" : "text-muted hover:text-foreground"}
                   `}
+                >
+                  {link.name}
+                </span>
+
+                {/* Animated underline */}
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute -bottom-1 left-0 h-0.5 bg-primary"
+                  animate={{ width: isActive ? "100%" : "0%" }}
+                  transition={{ duration: 0.3 }}
                 />
               </button>
             );
           })}
 
-          {/* Theme toggle */}
+          {/* Theme Toggle */}
           <button
-            aria-label="Toggle Theme"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="
-              p-2 rounded-lg
-              border border-border
-              hover:bg-surface transition
-              cursor-pointer
-              hover:text-amber-600
-            "
+            className="p-2 rounded-lg border border-border hover:bg-surface transition"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
 
-        {/* Mobile Button */}
+        {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 rounded-lg hover:bg-surface transition"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle Menu"
         >
           {open ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* 🔹 Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -144,37 +139,46 @@ const handleScroll = (href: string) => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="
-              md:hidden
-              bg-background border-t border-border
-              px-6 py-6 space-y-4
-            "
+            className="md:hidden bg-background border-t border-border px-6 py-6"
           >
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleScroll(link.href)}
-                className="
-                  block w-full text-left
-                  text-muted hover:text-foreground
-                  transition
-                "
-              >
-                {link.name}
-              </button>
-            ))}
-
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="
-                mt-4 w-full flex items-center gap-3
-                border border-border rounded-xl px-4 py-3
-                hover:bg-surface transition
-              "
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: { staggerChildren: 0.08 },
+                },
+              }}
+              className="space-y-4"
             >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-              Toggle Theme
-            </button>
+              {links.map((link) => (
+                <motion.button
+                  key={link.name}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                  onClick={() => handleScroll(link.href)}
+                  className={`
+                    block w-full text-left text-base font-medium
+                    ${active === link.href.replace("#", "")
+                      ? "text-primary"
+                      : "text-muted hover:text-foreground"}
+                  `}
+                >
+                  {link.name}
+                </motion.button>
+              ))}
+
+              {/* Mobile Theme Toggle */}
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="mt-6 w-full flex items-center gap-3 border border-border rounded-xl px-4 py-3 hover:bg-surface transition"
+              >
+                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                Toggle Theme
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

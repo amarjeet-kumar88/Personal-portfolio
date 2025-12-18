@@ -63,7 +63,7 @@ const certifications = [
 
 export default function About() {
   return (
-    <section id="about" className="py-32 bg-surface overflow-hidden">
+    <section id="about" data-bg="#0f172a" className="py-32 bg-surface overflow-hidden scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}

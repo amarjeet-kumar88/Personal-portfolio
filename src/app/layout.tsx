@@ -1,8 +1,10 @@
 import "./globals.css";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import { ThemeProvider } from "next-themes";
 import PageTransition from "@/components/ui/PageTransition";
+import SectionObserver from "@/components/ui/SectionObserver";
 import type { Metadata } from "next";
 
 const inter = Inter({
@@ -52,6 +54,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
+          <ScrollProgress />
+          <SectionObserver />
           <Navbar />
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>

@@ -2,16 +2,17 @@
 
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import Magnetic from "@/components/ui/Magnetic";
 import Image from "next/image";
-
 
 export default function Hero() {
   return (
     <section
       id="home"
+      data-bg="#0b0f19"
       className="
         relative min-h-screen overflow-hidden
-        bg-background
+        bg-background scroll-mt-28
       "
     >
       {/* Background Glow */}
@@ -22,7 +23,6 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          
           {/* LEFT: CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -57,28 +57,29 @@ export default function Hero() {
               exceptional user experience.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-6">
-              <a
-                href="#projects"
-                className="
-                  px-8 py-3 rounded-xl font-medium text-primary
+            <div className="mt-10 flex gap-6 items-center">
+              <Magnetic>
+                <a
+                  href="#projects"
+                  className="px-8 py-3 border rounded-xl font-medium text-primary
+                  bg-primary hover:bg-primary/90
+                  hover:scale-105 transition-all hover:text-amber-600"
+                >
+                  View Projects
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="https://drive.google.com/file/d/1p5YeV8GcFDAuLMgZg9pyJzCpPt-z5oWL/view?usp=drive_link"
+                  className="
+                  px-8 py-3 border rounded-xl font-medium text-primary
                   bg-primary hover:bg-primary/90
                   hover:scale-105 transition-all hover:text-amber-600
                 "
-              >
-                View Projects
-              </a>
-
-              <a
-                href="https://drive.google.com/file/d/1p5YeV8GcFDAuLMgZg9pyJzCpPt-z5oWL/view?usp=drive_link"
-                className="
-                  px-8 py-3 rounded-xl border border-border
-                  text-foreground hover:border-primary
-                  hover:text-primary hover:scale-105 transition-all hover:text-amber-600
-                "
-              >
-                Download Resume
-              </a>
+                >
+                  Download Resume
+                </a>
+              </Magnetic>
             </div>
           </motion.div>
 

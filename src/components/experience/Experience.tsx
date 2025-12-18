@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 bg-surface">
+    <section id="experience" className="py-32 bg-surface scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

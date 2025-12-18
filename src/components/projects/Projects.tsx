@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-32 bg-background">
+    <section id="projects" className="py-32 bg-background scroll-mt-28">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
