@@ -70,7 +70,7 @@ export default function Hero() {
               </Magnetic>
               <Magnetic>
                 <a
-                  href="https://drive.google.com/file/d/1p5YeV8GcFDAuLMgZg9pyJzCpPt-z5oWL/view?usp=drive_link"
+                  href="https://asset.cloudinary.com/djmyyc3y0/a3ef7467bbc8b1ab8b24aac03d28bd61"
                   className="
                   px-8 py-3 border rounded-xl font-medium text-primary
                   bg-primary hover:bg-primary/90
